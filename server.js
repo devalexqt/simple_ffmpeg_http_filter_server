@@ -10,6 +10,14 @@ app.use(morgan("combined"))
 app.post("/frame",(req,res)=>{
     const chunks=[]
     var buffer
+    //headers in request will include next fields to determine raw frame params:
+    console.log(">>> req.headers:",req.headers)
+
+    //set new image params that will be returned to ffmpeg http filter
+    res.header('frame_width',req.headers["frame_width"]);
+    res.header('frame_height',req.headers["frame_height"]);
+    res.header('frame_pix_fmt',req.headers["frame_pix_fmt"]);
+    // res.header('frame_pix_fmt',"yuv420p");
 
     req.on("data",data=>chunks.push(data))
 
