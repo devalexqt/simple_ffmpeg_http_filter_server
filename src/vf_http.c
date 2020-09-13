@@ -200,7 +200,7 @@ static int filter_frame(AVFilterLink *inlink, AVFrame *in)
     return AVERROR(EINVAL);
     }
     else{
-              printf(">>>>>>headers: width: %d, height: %d, pix_fmt: %d\n",headers_info.width,headers_info.height,headers_info.pix_fmt);
+    // printf(">>>>>>headers: width: %d, height: %d, pix_fmt: %d\n",headers_info.width,headers_info.height,headers_info.pix_fmt);
     if(headers_info.width==0||headers_info.height==0){
         av_log(NULL, AV_LOG_ERROR, "http filter failed: invalid frame size in response headers!\n");
         return AVERROR(EINVAL);        
